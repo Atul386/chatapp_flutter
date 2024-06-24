@@ -2,9 +2,11 @@ import 'dart:developer';
 import 'package:chatapp_flutter/screens/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:flutter_notification_channel/flutter_notification_channel.dart';
 import 'package:flutter_notification_channel/notification_importance.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'firebase_options.dart';
 import 'helper/theme.dart';
 
@@ -23,8 +25,10 @@ void main() {
       .then((value) async {
     _initializeFirebase();
 
+    Stripe.publishableKey =  "pk_test_51PKcsmSDyoUxo6W2PTX4Oi3Fe8cbIUotunTHnqPVNrnNwpL82AzD6CqMAWBlvs9myeQzf4TfnZU0DwMaBgraGZWL00HiqVCjjI";
+
     //Load our .env file that contains our Stripe Secret key
-    // await dotenv.load(fileName: "assets/.env");
+    await dotenv.load(fileName: "lib/.env");
     runApp(const MyApp());
   });
 }
