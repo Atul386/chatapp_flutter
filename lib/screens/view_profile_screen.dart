@@ -24,7 +24,7 @@ class _ViewProfileScreenState extends State<ViewProfileScreen> {
       // for hiding keyboard
       onTap: FocusScope.of(context).unfocus,
       child: Scaffold(
-          //app bar
+        //app bar
           appBar: AppBar(title: Text(widget.user.name)),
 
           //user about
@@ -75,7 +75,7 @@ class _ViewProfileScreenState extends State<ViewProfileScreen> {
                   // user email label
                   Text(widget.user.email,
                       style:
-                          const TextStyle(color: Colors.black87, fontSize: 16)),
+                      const TextStyle(color: Colors.black87, fontSize: 16)),
 
                   // for adding some space
                   SizedBox(height: mq.height * .02),

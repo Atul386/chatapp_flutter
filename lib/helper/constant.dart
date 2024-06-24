@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 //---------Onboarding------------
 const background = Color.fromARGB(255, 35, 35, 35);
+const primaryColor = Color.fromRGBO(83, 89, 200, 1);
+const secondaryColor = Color.fromRGBO(122, 126, 226, 1);
 // const background = Color.fromRGBO(52, 55, 80, 1);
 const pageImageColor = Color.fromARGB(255, 212, 212, 212);
 const pageTitleStyle = TextStyle(

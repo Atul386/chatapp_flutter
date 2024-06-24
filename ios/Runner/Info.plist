@@ -52,20 +52,20 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
-	<key>FirebaseAppDelegateProxyEnabled</key>
-    	<false/>
-    	<key>NSUserTrackingUsageDescription</key>
-    	<string>$(PRODUCT_NAME) would like your permission to track you across apps and websites owned by other companies.</string>
-    	<key>UIUserNotificationUsageDescription</key>
-    	<string>$(PRODUCT_NAME) would like to send you notifications.</string>
-    	<key>CFBundleURLTypes</key>
-    	<array>
-    		<dict>
-    			<key>CFBundleURLSchemes</key>
-    			<array>
-    				<string>com.googleusercontent.apps.348338311029-i8drscip28c7fn5qu91pkit14b2vf7v1</string>
-    			</array>
-    		</dict>
-    	</array>
+	<key>NSUserTrackingUsageDescription</key>
+	<string>$(PRODUCT_NAME) would like your permission to track you across apps and websites owned by other companies.</string>
+	<key>UIUserNotificationUsageDescription</key>
+	<string>$(PRODUCT_NAME) would like to send you notifications.</string>
+	<key>CFBundleURLTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleURLSchemes</key>
+			<array>
+				<string>com.googleusercontent.apps.348338311029-i8drscip28c7fn5qu91pkit14b2vf7v1</string>
+			</array>
+		</dict>
+	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Scan your card to add it automatically</string>
 </dict>
 </plist>
