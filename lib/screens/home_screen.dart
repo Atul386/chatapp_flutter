@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import '../api/apis.dart';
 import '../helper/dialogs.dart';
+import '../main.dart';
 import '../models/chat_user.dart';
 import '../widgets/chat_user_card.dart';
 
@@ -20,7 +21,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   // for storing all users
   List<ChatUser> _list = [];
-  late Size mq;
+
 
   // for storing searched items
   final List<ChatUser> _searchList = [];
@@ -53,6 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    mq = MediaQuery.of(context).size;
     return GestureDetector(
       //for hiding keyboard when a tap is detected on screen
       onTap: FocusScope.of(context).unfocus,
@@ -87,8 +89,8 @@ class _HomeScreenState extends State<HomeScreen> {
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
-                    Color(0xFF7209b7), // Start color
-                    Color(0xFF7209b7), // End color
+                    Color.fromRGBO(83, 89, 200, 1), // Start color
+                    Color.fromRGBO(83, 89, 200, 1), // End color
 
 
                   ],
@@ -102,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
               decoration: const InputDecoration(
                   border: InputBorder.none, hintText: 'Enter Name, Email etc.'),
               autofocus: true,
-              style: const TextStyle(fontSize: 17, letterSpacing: 0.5),
+              style: const TextStyle(fontSize: 17, letterSpacing: 0.5, color: Colors.white),
               //when search text changes then updated search list
               onChanged: (val) {
                 //search logic
@@ -148,7 +150,7 @@ class _HomeScreenState extends State<HomeScreen> {
           floatingActionButton: Padding(
             padding: const EdgeInsets.only(bottom: 10),
             child: FloatingActionButton(
-              backgroundColor: Colors.deepPurpleAccent[100],
+              backgroundColor: Color.fromRGBO(122, 126, 226, 1),
                 onPressed: () {
                   _addChatUserDialog();
                 },
@@ -227,68 +229,81 @@ class _HomeScreenState extends State<HomeScreen> {
     String email = '';
 
     showDialog(
-        context: context,
-        builder: (_) => AlertDialog(
-          backgroundColor: Color(0xFFE2ECF3),
-          contentPadding: const EdgeInsets.only(
-              left: 24, right: 24, top: 20, bottom: 10),
+      context: context,
+      builder: (_) => AlertDialog(
+        backgroundColor: const Color(0xFFE2ECF3),
+        contentPadding: const EdgeInsets.only(left: 24, right: 24, top: 20, bottom: 10),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
 
-          shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(20)),
-
-          //title
-          title: const Row(
-            children: [
-              Icon(
-                Icons.person_add,
-                color: Color(0xFF7209b7),
-                size: 28,
-              ),
-              Text('  Add User')
-            ],
-          ),
-
-          //content
-          content: TextFormField(
-            maxLines: null,
-            onChanged: (value) => email = value,
-            decoration: InputDecoration(
-                hintText: 'Email Id',
-                prefixIcon: const Icon(Icons.email, color: Color(0xFF7209b7)),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(15))),
-          ),
-
-          //actions
-          actions: [
-            //cancel button
-            MaterialButton(
-                onPressed: () {
-                  //hide alert dialog
-                  Navigator.pop(context);
-                },
-                child: const Text('Cancel',
-                    style: TextStyle(color: Color(0xFF7209b7), fontSize: 16))),
-
-            //add button
-            MaterialButton(
-                onPressed: () async {
-                  //hide alert dialog
-                  Navigator.pop(context);
-                  if (email.isNotEmpty) {
-                    await APIs.addChatUser(email).then((value) {
-                      if (!value) {
-                        Dialogs.showSnackbar(
-                            context, 'User does not Exists!');
-                      }
-                    });
-                  }
-                },
-                child: const Text(
-                  'Add',
-                  style: TextStyle(color: Color(0xFF7209b7), fontSize: 16),
-                ))
+        // Title
+        title: const Row(
+          children: [
+            Icon(
+              Icons.person_add,
+              color: Color.fromRGBO(83, 89, 200, 1),
+              size: 28,
+            ),
+            Text('  Add User')
           ],
-        ));
+        ),
+
+        // Content
+        content: TextFormField(
+          maxLines: null,
+          onChanged: (value) => email = value,
+          decoration: InputDecoration(
+            hintText: 'Email Id',
+            prefixIcon: Icon(Icons.email, color: Color.fromRGBO(83, 89, 200, 1)),
+            border: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: const BorderSide(color: Color.fromRGBO(83, 89, 200, 1) ),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: const BorderSide(color:Color.fromRGBO(83, 89, 200, 1) ),
+            ),
+            enabledBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.circular(15),
+              borderSide: const BorderSide(color: Color.fromRGBO(83, 89, 200, 1)),
+            ),
+          ),
+        ),
+
+        // Actions
+        actions: [
+          // Cancel button
+          MaterialButton(
+            onPressed: () {
+              // Hide alert dialog
+              Navigator.pop(context);
+            },
+            child: const Text(
+              'Cancel',
+              style: TextStyle(color: Color.fromRGBO(83, 89, 200, 1), fontSize: 16),
+            ),
+          ),
+
+          // Add button
+          MaterialButton(
+            onPressed: () async {
+              // Hide alert dialog
+              Navigator.pop(context);
+              if (email.isNotEmpty) {
+                await APIs.addChatUser(email).then((value) {
+                  if (!value) {
+                    Dialogs.showSnackbar(context, 'User does not exist!');
+                  }
+                });
+              }
+            },
+            child: const Text(
+              'Add',
+              style: TextStyle(color: Color.fromRGBO(83, 89, 200, 1), fontSize: 16),
+            ),
+          ),
+        ],
+      ),
+    );
   }
+
 }
