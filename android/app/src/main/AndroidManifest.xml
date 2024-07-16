@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
-        android:label="chatapp_flutter"
+        android:label="Aviary Chat"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity
@@ -20,6 +20,9 @@
               android:name="io.flutter.embedding.android.NormalTheme"
               android:resource="@style/NormalTheme"
               />
+            <meta-data
+                android:name="com.stripe.android.ApiKey"
+                android:value="pk_test_51PKcsmSDyoUxo6W2PTX4Oi3Fe8cbIUotunTHnqPVNrnNwpL82AzD6CqMAWBlvs9myeQzf4TfnZU0DwMaBgraGZWL00HiqVCjjI" />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
