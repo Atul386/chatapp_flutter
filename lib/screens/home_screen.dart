@@ -85,10 +85,12 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Scaffold(
           //app bar
           appBar: AppBar(
+            automaticallyImplyLeading: false,
             flexibleSpace:Container(
               decoration: const BoxDecoration(
                 gradient: LinearGradient(
                   colors: [
+
                     Color.fromRGBO(83, 89, 200, 1), // Start color
                     Color.fromRGBO(83, 89, 200, 1), // End color
 
@@ -102,7 +104,7 @@ class _HomeScreenState extends State<HomeScreen> {
             title: _isSearching
                 ? TextField(
               decoration: const InputDecoration(
-                  border: InputBorder.none, hintText: 'Enter Name, Email etc.'),
+                  border: InputBorder.none, hintText: 'Enter Name, Email etc.',hintStyle: TextStyle(color: Colors.white70)),
               autofocus: true,
               style: const TextStyle(fontSize: 17, letterSpacing: 0.5, color: Colors.white),
               //when search text changes then updated search list
