@@ -19,6 +19,8 @@ import '../widgets/message_card.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
+import 'home_screen.dart';
+
 
 class ChatScreen extends StatefulWidget {
   final ChatUser user;
@@ -182,7 +184,13 @@ class _ChatScreenState extends State<ChatScreen> {
                     children: [
                       //back button
                       IconButton(
-                          onPressed: () => Navigator.pop(context),
+                          onPressed: (){
+                            Navigator.pushAndRemoveUntil(
+                              context,
+                              MaterialPageRoute(builder: (context) => HomeScreen()),
+                                  (Route<dynamic> route) => false,
+                            );
+                          },
                           icon: const Icon(Icons.arrow_back,
                               color: Colors.white)),
 
